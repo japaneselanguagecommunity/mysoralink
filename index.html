@@ -59,14 +59,14 @@
     const QrCode = (p) => <IconBase {...p}><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></IconBase>;
     const Copy = (p) => <IconBase {...p}><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></IconBase>;
     const Check = (p) => <IconBase {...p}><polyline points="20 6 9 17 4 12"></polyline></IconBase>;
-    const Download = (p) => <IconBase {...p}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></IconBase>;
+    const Download = (p) => <IconBase {...p}><path d="M21 15v4a2 2 0 0 1-2-2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></IconBase>;
     const Clock = (p) => <IconBase {...p}><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></IconBase>;
     const Star = (p) => <IconBase {...p}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></IconBase>;
     const Search = (p) => <IconBase {...p}><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></IconBase>;
     const Menu = (p) => <IconBase {...p}><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></IconBase>;
     const X = (p) => <IconBase {...p}><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></IconBase>;
     const Home = (p) => <IconBase {...p}><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></IconBase>;
-    const WhatsappIcon = (p) => <IconBase {...p}><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></IconBase>;
+    const TelegramIcon = (p) => <IconBase {...p}><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"></path></IconBase>;
 
     const qrisBase64 = "https://i.imgur.com/oOLS8mt.jpeg";
 
@@ -77,7 +77,7 @@
       'Proses bisa instan/cepat/lambat sesuai antrian',
       'Semua produk Soralink bergaransi',
       'Bonus tersedia untuk kategori produk dan customer pilihan',
-      'Apabila dalam 15 menit belum menerima respon dari admin, silakan menghubungi melalui panggilan telepon ke nomor WhatsApp yang tertera'
+      'Apabila dalam 15 menit belum menerima respon dari admin, silakan menghubungi melalui panggilan telepon ke nomor yang tertera'
     ];
 
     const products = [
@@ -1292,7 +1292,7 @@
 
       const finalPrice = getBasePrice() * qty;
       const isCurrentlySoldOut = product.disabledDurations && product.disabledDurations[selectedVariant] && product.disabledDurations[selectedVariant].includes(selectedDuration);
-      const waSuccessUrl = `https://wa.me/6285123093681?text=${encodeURIComponent(`Halo kak, saya sudah melakukan pembayaran.\n\nProduk: ${selectedVariant}\nDurasi: ${selectedDuration}\nHarga: ${formatRupiah(finalPrice)}\nKode Transaksi: ${transactionCode}\n\nMohon untuk segera diproses ya, terima kasih! ☺️`)}`;
+      const tgSuccessUrl = `https://t.me/soralink_id?text=${encodeURIComponent(`Halo kak, saya sudah melakukan pembayaran.\n\nProduk: ${selectedVariant}\nDurasi: ${selectedDuration}\nHarga: ${formatRupiah(finalPrice)}\nKode Transaksi: ${transactionCode}\n\nMohon untuk segera diproses ya, terima kasih! ☺️`)}`;
 
       const AccordionItem = ({ id, title, children }) => {
         const isOpen = openSection === id;
@@ -1527,13 +1527,13 @@
                 `}
               </style>
               <div className="bg-black/60 backdrop-blur-2xl border border-white/10 rounded-3xl w-full max-w-sm p-6 md:p-8 flex flex-col items-center relative shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
-                <div className="w-14 h-14 md:w-16 md:h-16 bg-green-500/20 border border-green-500/30 rounded-full flex items-center justify-center text-green-400 mb-4 md:mb-6 animate-dopamine">
+                <div className="w-14 h-14 md:w-16 md:h-16 bg-blue-500/20 border border-blue-500/30 rounded-full flex items-center justify-center text-blue-400 mb-4 md:mb-6 animate-dopamine">
                   <Check className="w-6 h-6 md:w-8 md:h-8 stroke-[3]" />
                 </div>
                 <h3 className="text-lg md:text-xl font-bold text-white mb-1.5 md:mb-2">Pembayaran Berhasil</h3>
                 <p className="text-[10px] md:text-xs text-neutral-400 text-center leading-relaxed mb-6 md:mb-8 whitespace-nowrap">Terima kasih! Silakan hubungi admin untuk proses aktivasi.</p>
-                <a href={waSuccessUrl} target="_blank" rel="noopener noreferrer" className="w-full py-3 md:py-3.5 rounded-xl bg-[#1da04f]/80 backdrop-blur-md border border-[#1da04f] hover:bg-[#1da04f] text-white transition-all duration-300 text-xs md:text-sm font-bold tracking-wide flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(29,160,79,0.3)]">
-                  <WhatsappIcon className="w-4 h-4 md:w-5 md:h-5" /> Hubungi Admin Via WhatsApp
+                <a href={tgSuccessUrl} target="_blank" rel="noopener noreferrer" className="w-full py-3 md:py-3.5 rounded-xl bg-[#2AABEE]/80 backdrop-blur-md border border-[#2AABEE] hover:bg-[#2AABEE] text-white transition-all duration-300 text-xs md:text-sm font-bold tracking-wide flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(42,171,238,0.3)]">
+                  <TelegramIcon className="w-4 h-4 md:w-5 md:h-5" /> Hubungi Admin Via Telegram
                 </a>
                 <button onClick={() => { setShowSuccessModal(false); onBack(); }} className="absolute top-4 right-4 text-neutral-400 hover:text-white transition-colors bg-white/5 p-1 rounded-full backdrop-blur-md">
                   <X className="w-5 h-5" />
@@ -1629,6 +1629,7 @@
       const [currentView, setCurrentView] = useState('home');
       const [history, setHistory] = useState([]);
       const [splashState, setSplashState] = useState('visible');
+      const [showMigrationPopup, setShowMigrationPopup] = useState(false);
       const [fakeNotif, setFakeNotif] = useState({ data: null, isVisible: false });
       const [placeholderText, setPlaceholderText] = useState('');
       const [phraseIndex, setPhraseIndex] = useState(0);
@@ -1652,7 +1653,12 @@
 
       useEffect(() => {
         const t1 = setTimeout(() => setSplashState('fading'), 2000);
-        const t2 = setTimeout(() => setSplashState('hidden'), 2500);
+        const t2 = setTimeout(() => {
+          setSplashState('hidden');
+          if (!localStorage.getItem('tg_popup_seen')) {
+            setShowMigrationPopup(true);
+          }
+        }, 2500);
         try {
           const manifest = { name: "Soralink", short_name: "Soralink", start_url: ".", display: "standalone", background_color: "#ffffff", theme_color: "#0a0a0a", icons: [{ src: "https://i.imgur.com/RhhCJLY.png", sizes: "512x512", type: "image/png", purpose: "any maskable" }] };
           const manifestURL = URL.createObjectURL(new Blob([JSON.stringify(manifest)], { type: 'application/json' }));
@@ -1702,8 +1708,9 @@
       });
 
       const categories = ['All', 'Productivity', 'Editing', 'Entertainment', 'Utility', 'Bundling'];
-      const waUrl = "https://wa.me/6285123093681?text=Halo%20kak%2C%20saya%20ingin%20bertanya%20tentang%20produk%20Soralink.";
-      const waSearchUrl = `https://wa.me/6285123093681?text=${encodeURIComponent('Halo kak, aku sedang mencari (Ketik nama produk).\nApakah produk tersebut tersedia di Soralink?\n\nMohon untuk di konfirmasi ya kak, terima kasih! ☺️🙏')}`;
+      const tgUrl = "https://t.me/soralink_id";
+      const tgAdminUrl = `https://t.me/soralink_id?text=${encodeURIComponent('Halo kak, saya ingin bertanya tentang produk Soralink.')}`;
+      const tgSearchUrl = `https://t.me/soralink_id?text=${encodeURIComponent('Halo kak, aku sedang mencari (Ketik nama produk).\nApakah produk tersebut tersedia di Soralink?\n\nMohon untuk di konfirmasi ya kak, terima kasih! ☺️🙏')}`;
 
       return (
         <div className="min-h-screen relative overflow-hidden">
@@ -1711,6 +1718,35 @@
           {splashState !== 'hidden' && (
             <div className={`fixed inset-0 z-[9999] bg-white flex items-center justify-center transition-opacity duration-500 ${splashState === 'fading' ? 'opacity-0' : 'opacity-100'}`}>
               <img src="https://i.imgur.com/RhhCJLY.png" alt="Soralink Logo" className="w-48 md:w-64 lg:w-72 h-auto object-contain animate-splash-logo" fetchpriority="high" />
+            </div>
+          )}
+
+          {showMigrationPopup && (
+            <div className="fixed inset-0 z-[9998] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+              <div className="bg-neutral-900 border border-white/10 rounded-3xl w-full max-w-sm p-6 md:p-8 flex flex-col items-center relative shadow-2xl text-center">
+                <div className="w-16 h-16 bg-blue-500/20 border border-blue-500/30 rounded-full flex items-center justify-center text-blue-400 mb-6">
+                  <TelegramIcon className="w-8 h-8" />
+                </div>
+                <h3 className="text-base md:text-lg font-bold text-white mb-3 tracking-wide uppercase whitespace-nowrap">UPDATE LAYANAN PELANGGAN</h3>
+                <p className="text-xs md:text-sm text-neutral-400 leading-relaxed mb-8">
+                  Soralink tidak lagi menggunakan WhatsApp sebagai kanal komunikasi utama. Seluruh aktivitas <strong>Support</strong> dan <strong>Transaksi</strong> kini dialihkan ke Telegram untuk proses yang lebih cepat dan bebas kendala spam.
+                </p>
+                <a
+                  href={tgUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => { setShowMigrationPopup(false); localStorage.setItem('tg_popup_seen', 'true'); }}
+                  className="w-full py-3.5 rounded-xl bg-[#2AABEE] hover:bg-[#229ED9] text-white transition-all duration-300 text-xs md:text-sm font-bold tracking-wide flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(42,171,238,0.3)]"
+                >
+                  <TelegramIcon className="w-5 h-5" /> Hubungi Admin di Telegram
+                </a>
+                <button 
+                  onClick={() => { setShowMigrationPopup(false); localStorage.setItem('tg_popup_seen', 'true'); }} 
+                  className="absolute top-4 right-4 text-neutral-500 hover:text-white transition-colors bg-white/5 p-1.5 rounded-full"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
             </div>
           )}
 
@@ -1736,9 +1772,8 @@
               {isMenuOpen && (
                 <div className="absolute top-[calc(100%+16px)] right-0 w-56 bg-neutral-900/95 backdrop-blur-xl border border-white/10 rounded-2xl p-4 flex flex-col gap-4 shadow-2xl">
                   <button onClick={() => { setCurrentView('home'); setSelectedProduct(null); setIsMenuOpen(false); }} className="flex items-center gap-3 text-sm font-medium text-neutral-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5 w-full text-left"><Home className="w-4 h-4" /> Home</button>
-                  <a href={waUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm font-medium text-neutral-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5 w-full text-left"><WhatsappIcon className="w-4 h-4" /> Admin</a>
+                  <a href={tgAdminUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm font-medium text-neutral-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5 w-full text-left"><TelegramIcon className="w-4 h-4" /> Admin</a>
                   <button onClick={() => { setCurrentView('history'); setSelectedProduct(null); setIsMenuOpen(false); }} className="flex items-center gap-3 text-sm font-medium text-neutral-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5 w-full text-left"><Clock className="w-4 h-4" /> Riwayat</button>
-                  <a href="https://whatsapp.com/channel/0029Vb6r2QKK0IBcQAtDgo2S" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm font-medium text-neutral-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5 w-full text-left"><Star className="w-4 h-4" /> Update & Testimoni</a>
                 </div>
               )}
             </div>
@@ -1748,8 +1783,8 @@
             <div className="fixed bottom-6 left-4 right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 md:w-[400px] z-50">
               <div className={`${glassCard} flex justify-around items-center px-4 py-3 !rounded-full`}>
                 <button onClick={() => setCurrentView('home')} className={`flex flex-col items-center gap-1 transition-colors w-16 ${currentView === 'home' ? 'text-white' : 'text-neutral-400 hover:text-white'}`}><Home className="w-5 h-5" /><span className="text-[10px] font-medium">Home</span></button>
-                <a href={waUrl} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-1 text-white hover:text-neutral-300 transition-colors relative -top-4 w-16 group">
-                  <div className="bg-neutral-800 p-3 rounded-full border border-white/10 shadow-2xl group-hover:bg-neutral-700 transition-colors"><WhatsappIcon className="w-5 h-5" /></div>
+                <a href={tgAdminUrl} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-1 text-white hover:text-neutral-300 transition-colors relative -top-4 w-16 group">
+                  <div className="bg-neutral-800 p-3 rounded-full border border-white/10 shadow-2xl group-hover:bg-neutral-700 transition-colors"><TelegramIcon className="w-5 h-5" /></div>
                   <span className="text-[10px] font-medium absolute -bottom-5">Admin</span>
                 </a>
                 <button onClick={() => setCurrentView('history')} className={`flex flex-col items-center gap-1 transition-colors w-16 ${currentView === 'history' ? 'text-white' : 'text-neutral-400 hover:text-white'}`}><Clock className="w-5 h-5" /><span className="text-[10px] font-medium whitespace-nowrap">Riwayat</span></button>
@@ -1796,9 +1831,9 @@
                   <div className="text-center py-12 md:py-16 px-4 md:px-8 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md flex flex-col items-center justify-center max-w-2xl mx-auto mt-4 shadow-2xl">
                     <div className="w-14 h-14 md:w-16 md:h-16 bg-black/20 rounded-full flex items-center justify-center mb-4 md:mb-5 border border-white/5"><Search className="w-6 h-6 md:w-8 md:h-8 text-neutral-500" /></div>
                     <h3 className="text-[10px] min-[375px]:text-xs sm:text-base md:text-xl font-bold text-white mb-2 tracking-tight whitespace-nowrap">Tidak menemukan produk digital yang kamu cari?</h3>
-                    <p className="text-neutral-400 text-[10px] md:text-sm mb-6 md:mb-8 text-center max-w-md leading-relaxed">Hubungi admin melalui WhatsApp untuk menanyakan ketersediaan produk khusus yang tidak tampil di katalog utama Soralink.</p>
-                    <a href={waSearchUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-fit gap-2.5 md:gap-3 px-5 md:px-6 py-3 md:py-3.5 bg-white text-black hover:bg-neutral-200 transition-all duration-300 rounded-xl text-xs md:text-sm font-bold tracking-wide shadow-xl hover:-translate-y-1 animate-btn-pulse hover:animate-none">
-                      <WhatsappIcon className="w-4 h-4 md:w-5 md:h-5" /> Tanya ketersediaan produk
+                    <p className="text-neutral-400 text-[10px] md:text-sm mb-6 md:mb-8 text-center max-w-md leading-relaxed">Hubungi admin melalui Telegram untuk menanyakan ketersediaan produk khusus yang tidak tampil di katalog utama Soralink.</p>
+                    <a href={tgSearchUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-fit gap-2.5 md:gap-3 px-5 md:px-6 py-3 md:py-3.5 bg-[#2AABEE] text-white hover:bg-[#229ED9] transition-all duration-300 rounded-xl text-xs md:text-sm font-bold tracking-wide shadow-xl hover:-translate-y-1 animate-btn-pulse hover:animate-none">
+                      <TelegramIcon className="w-4 h-4 md:w-5 md:h-5" /> Tanya ketersediaan produk
                     </a>
                   </div>
                 </ScrollReveal>
@@ -1852,28 +1887,13 @@
                           <p className="text-[9px] md:text-xs text-neutral-400 leading-snug">Hubungi admin untuk menanyakan ketersediaan produk khusus.</p>
                         </div>
                       </div>
-                      <a href={waSearchUrl} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-4 py-2.5 bg-white text-black hover:bg-neutral-200 transition-all duration-300 rounded-xl text-[10px] md:text-xs font-bold tracking-wide flex items-center justify-center gap-2 shrink-0 shadow-lg hover:-translate-y-1">
-                        <WhatsappIcon className="w-3.5 h-3.5 md:w-4 md:h-4" /> Tanya Admin
+                      <a href={tgSearchUrl} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-4 py-2.5 bg-[#2AABEE] text-white hover:bg-[#229ED9] transition-all duration-300 rounded-xl text-[10px] md:text-xs font-bold tracking-wide flex items-center justify-center gap-2 shrink-0 shadow-lg hover:-translate-y-1">
+                        <TelegramIcon className="w-3.5 h-3.5 md:w-4 md:h-4" /> Tanya Admin
                       </a>
                     </div>
                   </ScrollReveal>
                 </>
               )}
-
-              <ScrollReveal delay={250}>
-                <div className="mt-12 md:mt-16 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md p-4 md:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl text-center sm:text-left">
-                  <div className="flex flex-col sm:flex-row items-center gap-3 md:gap-4">
-                    <div className="w-10 h-10 bg-black/20 rounded-full flex items-center justify-center border border-white/5 shrink-0 hidden sm:flex"><Star className="w-4 h-4 text-neutral-500" /></div>
-                    <div>
-                      <h4 className="text-[11px] md:text-sm font-bold text-white mb-0.5">Ingin melihat rekam jejak kami?</h4>
-                      <p className="text-[9px] md:text-xs text-neutral-400 leading-snug">Cek pembaruan katalog dan testimoni pelanggan di saluran resmi Soralink.</p>
-                    </div>
-                  </div>
-                  <a href="https://whatsapp.com/channel/0029Vb6r2QKK0IBcQAtDgo2S" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-4 py-2.5 bg-white text-black hover:bg-neutral-200 transition-all duration-300 rounded-xl text-[10px] md:text-xs font-bold tracking-wide flex items-center justify-center gap-2 shrink-0 shadow-lg hover:-translate-y-1">
-                    <Star className="w-3.5 h-3.5 md:w-4 md:h-4" /> Cek Testimoni
-                  </a>
-                </div>
-              </ScrollReveal>
 
               <ScrollReveal delay={300}>
                 <footer className="mt-12 md:mt-16 text-center text-sm font-medium text-white flex flex-col items-center gap-5">&copy; Soralink</footer>
